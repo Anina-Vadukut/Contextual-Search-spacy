@@ -83,15 +83,14 @@ class MyWindow:
                 des = r1.orth_.split()          
                 if r2.text == 'less than':
                     mon = r3.orth_.split()
-                    for i in mon:
-                        if i.isdigit():
-                            lis = int(i)
-                            d = df.query('Selling_Price <= @lis')
-                            small=  d["Description"].str.findall('.*?'+'.*'.join(des)+'.*', re.I)
+                    for val in mon:
+                        if val.isdigit():
+                            lis = int(val)
+                            df_new = df.query('Selling_Price <= @lis')
+                            small = df_new["Description"].str.findall('.*?'+'.*'.join(des)+'.*', re.I)
                             for i in small:
                                 if i: 
                                     for a in i:
-                                        print(a, end=', ')
                                         self.t3.insert(END, a + '\n')
 
 window=Tk()
