@@ -61,7 +61,7 @@ class MyWindow:
                 if money.dep_ in ("appos", "npadvmod", "nsubj", "conj"):
                     relations.append((money.head, i, money))
                 elif money.dep_ in ("pobj", "dobj"):
-                    relations.append((money.head, i, money))
+                    relations.append((money.head.head, i, money))
         return relations    
 
     def add(self):
@@ -88,10 +88,10 @@ class MyWindow:
                             lis = int(val)
                             df_new = df.query('Selling_Price <= @lis')
                             small = df_new["Description"].str.findall('.*?'+'.*'.join(des)+'.*', re.I)
-                            for i in small:
-                                if i: 
-                                    for a in i:
-                                        self.t3.insert(END, a + '\n')
+                            for line in small:
+                                if line: 
+                                    for sent in line:
+                                        self.t3.insert(END, sent + '\n')
 
 window=Tk()
 mywin=MyWindow(window)
