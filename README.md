@@ -3,3 +3,5 @@ Context based search of FMCG products using NLP which understands intent behind 
 We give input like "Facewash less than 200 rupees" and we get all products which satisfies the condition as output.
 
 ![Screenshot](GUI2.JPG width="48")
+
+<img src="GUI2.JPG" width="48">
